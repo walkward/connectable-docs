@@ -1,0 +1,11 @@
+const rp = require('request-promise')
+const options = {
+  method: '{{=data.methodUpper}}'{{?data.bodyParameter.present || data.allHeaders.length}},{{?}}
+  uri: '{{=data.url}}{{=data.requiredQueryString}}',
+  {{?data.allHeaders.length}}const headers = {
+  {{~data.allHeaders :p:index}}  '{{=p.name}}':{{=p.exampleValues.json}}{{?index < data.allHeaders.length-1}},{{?}}
+  {{~}}}{{?}}{{?data.bodyParameter.present}},{{!"\n"}}  body: body{{?}}
+}
+rp(options)
+    .then(result => { console.log( result )})
+    .catch(err => { console.log(err) })

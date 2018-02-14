@@ -1,0 +1,16 @@
+{
+  "name": "connectable-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "widdershins": "^3.0.2"
+  },
+  "scripts": {
+    "docs:widdershins": "widdershins -e ./slate/widdershins.json ../api/openapi.yaml -o ./slate/source/index.html.md",
+    "docs:slate": "cd slate ; bundle install ; bundle exec middleman build --clean ; cd - ; rm -r ./docs ; mv ./slate/build ./docs",
+    "docs:build": "npm run docs:widdershins && npm run docs:slate:build && git add ./docs && git commit -m 'auto update docs' && git push",
+    "docs:watch": "cd slate ; bundle exec middleman server ; cd -",
+    "docs:open": "open https://walkward.github.io/chatable-api"
+  }
+}

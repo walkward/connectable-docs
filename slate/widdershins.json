@@ -1,0 +1,5 @@
+{
+  "language_tabs": ["javascript--nodejs", "shell"],
+  "theme": "atom-one-dark",
+  "user_templates": "./slate/templates/openapi3"
+}
